@@ -39,31 +39,30 @@ exports.resolvers = {
     },
     updateEmployee: async (parent, args) => {
       if (!args.employeeId) {
-        return;
+        return null; // You might want to return something indicating an error or missing input
       }
-      return await Employee.findOneAndUpdate(
-        {
-          _id: args.id,
-        },
-        {
-          $set: {
-            firstName: args.firstName,
-            lastName: args.lastName,
-            email: args.email,
-            gender: args.gender,
-            salary: args.salary,
+      
+      try {
+        const updatedEmployee = await Employee.findOneAndUpdate(
+          { _id: args.employeeId }, // Corrected to use employeeId
+          {
+            $set: {
+              firstName: args.firstName,
+              lastName: args.lastName,
+              email: args.email,
+              gender: args.gender,
+              salary: args.salary,
+            },
           },
-        },
-        { new: true },
-        (err, employee) => {
-          if (err) {
-            console.log("Something went wrong when updating the employee");
-          } else {
-            return employee;
-          }
-        }
-      );
-    },
+          { new: true }
+        );
+    
+        return updatedEmployee;
+      } catch (error) {
+        console.error("Something went wrong when updating the employee:", error);
+        throw new Error("Failed to update employee");
+      }
+    },    
     deleteEmployee: async (parent, args) => {
       if (!args.employeeId) {
         return JSON.stringify({
