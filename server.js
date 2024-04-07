@@ -8,10 +8,8 @@ const Resolvers = require("./resolver");
 
 const { ApolloServer } = require("apollo-server-express");
 
-const dotenv = require("dotenv");
-dotenv.config();
-
-const mongodb_atlas_url = process.env.MONGODB_ATLAS_URL;
+const mongodb_atlas_url = "mongodb+srv://vedqntgohel:r9KC6muUvCXjNIeJ@vedant.zonvp7s.mongodb.net/Comp3133?retryWrites=true&w=majority";
+const port = 4000;
 
 mongoose.connect(mongodb_atlas_url, {});
 
@@ -32,9 +30,9 @@ app.use("*", cors());
   await server.start();
   server.applyMiddleware({ app });
 
-  app.listen({ port: process.env.PORT }, () => {
+  app.listen({ port }, () => {
     console.log(
-      `Server is running at http://localhost:4000${server.graphqlPath}`
+      `Server is running at http://localhost:${port}${server.graphqlPath}`
     );
   });
 })();
