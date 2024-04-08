@@ -1,0 +1,55 @@
+<div class="container">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <div class="card">
+    <div class="card-title">
+      <h2>Employee Listing</h2>
+    </div>
+    <div class="card-body">
+      <div class="divbtn">
+        <a (click)="navigateToCreate()" class="btn btn-success buttons"
+          >Add New (+)</a
+        >
+        <button (click)="handleLogout()" class="btn btn-danger buttons">
+          Logout
+        </button>
+      </div>
+      <table class="table table-bordered">
+        <thead style="background-color: black; color: white">
+          <tr>
+            <td>Employee First Name</td>
+            <td>Employee Last Name</td>
+            <td>Email</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of empdata">
+            <td>{{ item.firstName }}</td>
+            <td>{{ item.lastName }}</td>
+            <td>{{ item.email }}</td>
+            <td>
+              <button
+                (click)="loadDetail(item.id)"
+                class="btn btn-primary button"
+              >
+                View
+              </button>
+              <button
+                (click)="loadUpdate(item.id)"
+                class="btn btn-success button"
+              >
+                Update
+              </button>
+              <button
+                (click)="removeEmployee(item.id)"
+                class="btn btn-danger button"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

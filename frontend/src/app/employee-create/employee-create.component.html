@@ -1,0 +1,55 @@
+<div class="container">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <h2>Create Employee</h2>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender" class="form-control">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input
+        type="text"
+        id="salary"
+        formControlName="salary"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" class="btn btn-success button">
+      Create Employee
+    </button>
+
+    <a routerLink="/employee-list" class="btn btn-secondary button">Back</a>
+  </form>
+</div>

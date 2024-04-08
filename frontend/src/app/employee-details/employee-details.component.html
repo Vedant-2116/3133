@@ -1,0 +1,18 @@
+<div class="container">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <ng-container *ngIf="employee">
+    <div class="card">
+      <div class="card-header">
+        <h2>Employee Details</h2>
+      </div>
+      <div class="card-body">
+        <p><strong>First Name:</strong> {{ employee.firstName }}</p>
+        <p><strong>Last Name:</strong> {{ employee.lastName }}</p>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Gender:</strong> {{ employee.gender }}</p>
+        <p><strong>Salary:</strong> {{ employee.salary }}</p>
+      </div>
+    </div>
+    <a (click)="navigateBack()" class="btn btn-secondary button">Back</a>
+  </ng-container>
+</div>
